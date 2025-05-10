@@ -1,0 +1,59 @@
+Title:
+Analysis of an Integrated Model of Personal Development
+N=1066
+
+Data:
+File is Base_1066_noheader_2017-06.dat;
+
+Variable:
+Names are
+Id Sexe Age Situfam Enfant Situpro Contract Missdays Income 
+Educatio Compsize Manager CSP1 CSP2 Sector Zipcode ZoneFR1 ZoneFR2 
+MHCA1-MHCA14 MHCB1-MHCB14 MHCC1-MHCC14 PE1-PE20 Flux1-Flux13 
+Cap1 Cap2 Cap3 AD1-AD10 EfP1-EfP8 UF1-UF6 HSE1-HSE35 
+ALQ1-ALQ16 abs1-abs11 Imp1-Imp6 Force1-Force24 
+Inwork ExperDP PratDP cabs1-cabs7;
+
+Idvariable is Id;
+Missing are all (999);
+
+Usevariables are
+PE11 PE12 PE14
+PE3 PE17 PE18
+FLUX2 Flux4 FLUX5 FLUX6 FLUX7 Flux9
+AD2 AD3 AD4 AD5 AD6 AD8 AD9 AD10
+EfP5 EfP7 EfP8
+UF2 UF3 UF4 UF6 ;
+
+Analysis:
+
+Estimator is MLR;
+
+Model:
+
+FOP by 
+PE11 PE12 PE14
+PE3 PE17 PE18
+FLUX2 Flux4 FLUX5 FLUX6 FLUX7 Flux9 
+AD2 AD3 AD4 AD5 AD6 AD8 AD9 AD10
+EfP5 EfP7 EfP8
+UF2 UF3 UF4 UF6 ;
+
+PosEm by PE11 PE12 PE14;
+NegEm by PE3 PE17 PE18;
+Flow by FLUX2 Flux4 FLUX5 FLUX6 FLUX7 Flux9;
+SelfDet by AD2 AD3 AD4 AD5 AD6 AD8 AD9 AD10;
+Perseff by EFP5 EFP7 EFP8;
+Strength by UF2 UF3 UF4 UF6;
+
+FOP with PosEm@0 NegEm@0 Flow@0; 
+FOP with SelfDet@0 Perseff@0 Strength@0;
+PosEm with NegEm@0 Flow@0 SelfDet@0 Perseff@0 Strength@0;
+NegEm with Flow@0 SelfDet@0 Perseff@0 Strength@0;
+Flow with SelfDet@0 Perseff@0 Strength@0;
+SelfDet with Perseff@0 Strength@0;
+Perseff with Strength@0;
+
+Output:
+STDYX Modindices(all) Res Tech4;
+

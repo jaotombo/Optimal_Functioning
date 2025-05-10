@@ -1,0 +1,744 @@
+Mplus VERSION 8.7
+MUTHEN & MUTHEN
+04/13/2025  12:55 PM
+
+INPUT INSTRUCTIONS
+
+  Title:
+  Analyse en Classes Latentes FOP Bi-ESEM
+
+  Data:
+  File is "data/FOP_BIESEM_Fscores.dat" ;
+
+  Variable:
+  Names are
+  PE11 PE13 PE14 PE16 PE19
+  PE3 PE5 PE6 PE10 PE17
+  FLUX2 FLUX5 FLUX6 FLUX7 FLUX8
+  AD2 AD3 AD4 AD5 AD6 AD8 AD9 AD10
+  EFP2 EFP3 EFP6 EFP7 EFP8
+  UF2 UF3 UF4 UF6
+  FOP FOP_SE POSEM POSEM_SE NEGEM NEGEM_SE FLOW FLOW_SE
+  SELFDET SELFDET_SE PERSEFF PERSEFF_SE STRENGTH STRENGTH_SE
+  ID ;
+
+  Idvariable is ID;
+  Missing are * ;
+
+  Usevariables are
+  FOP POSEM NEGEM FLOW SELFDET PERSEFF STRENGTH ;
+
+  Classes are CL_FOP(3);
+
+
+  Analysis:
+  Estimator is MLR ;
+  Type is Mixture ;
+  Processors are 14 ;
+  Starts is 1000 200 ;
+  Lrtstarts is 0 0 500 100 ;
+
+  Model:
+
+  %overall%
+  FOP POSEM NEGEM FLOW SELFDET PERSEFF STRENGTH ;
+  [FOP POSEM NEGEM FLOW SELFDET PERSEFF STRENGTH] ;
+
+  %CL_FOP#1%
+  FOP POSEM NEGEM FLOW SELFDET PERSEFF STRENGTH ;
+  [FOP POSEM NEGEM FLOW SELFDET PERSEFF STRENGTH] ;
+
+  %CL_FOP#2%
+  FOP POSEM NEGEM FLOW SELFDET PERSEFF STRENGTH ;
+  [FOP POSEM NEGEM FLOW SELFDET PERSEFF STRENGTH] ;
+
+  %CL_FOP#3%
+  FOP POSEM NEGEM FLOW SELFDET PERSEFF STRENGTH ;
+  [FOP POSEM NEGEM FLOW SELFDET PERSEFF STRENGTH] ;
+
+  Output:
+  Sampstat stdyx ;
+  Tech11 ;
+  Tech14;
+
+  Plot:
+  Type=plot3;
+  Series= FOP(*) POSEM(*) NEGEM(*) FLOW(*) SELFDET(*) PERSEFF(*) STRENGTH(*);
+
+  Savedata:
+  !File is Bi_ESEM_FOP_3cl_free.dat;
+  !Format is FREE ;
+  !Save is cprobabilities;
+
+
+
+*** WARNING in MODEL command
+  All variables are uncorrelated with all other variables within class.
+  Check that this is what is intended.
+   1 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+Analyse en Classes Latentes FOP Bi-ESEM
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         514
+
+Number of dependent variables                                    7
+Number of independent variables                                  0
+Number of continuous latent variables                            0
+Number of categorical latent variables                           1
+
+Observed dependent variables
+
+  Continuous
+   FOP         POSEM       NEGEM       FLOW        SELFDET     PERSEFF
+   STRENGTH
+
+Categorical latent variables
+   CL_FOP
+
+Variables with special functions
+
+  ID variable           ID
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Optimization Specifications for the Quasi-Newton Algorithm for
+Continuous Outcomes
+  Maximum number of iterations                                 100
+  Convergence criterion                                  0.100D-05
+Optimization Specifications for the EM Algorithm
+  Maximum number of iterations                                 500
+  Convergence criteria
+    Loglikelihood change                                 0.100D-06
+    Relative loglikelihood change                        0.100D-06
+    Derivative                                           0.100D-05
+Optimization Specifications for the M step of the EM Algorithm for
+Categorical Latent variables
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-05
+  Basis for M step termination                           ITERATION
+Optimization Specifications for the M step of the EM Algorithm for
+Censored, Binary or Ordered Categorical (Ordinal), Unordered
+Categorical (Nominal) and Count Outcomes
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-05
+  Basis for M step termination                           ITERATION
+  Maximum value for logit thresholds                            15
+  Minimum value for logit thresholds                           -15
+  Minimum expected cell size for chi-square              0.100D-01
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+Random Starts Specifications
+  Number of initial stage random starts                       1000
+  Number of final stage optimizations                          200
+  Number of initial stage iterations                            10
+  Initial stage convergence criterion                    0.100D+01
+  Random starts scale                                    0.500D+01
+  Random seed for generating random starts                       0
+
+Input data file(s)
+  data/FOP_BIESEM_Fscores.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             1
+     Number of y missing data patterns           1
+     Number of u missing data patterns           0
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT FOR Y
+
+
+           Covariance Coverage
+              FOP           POSEM         NEGEM         FLOW          SELFDET
+              ________      ________      ________      ________      ________
+ FOP            1.000
+ POSEM          1.000         1.000
+ NEGEM          1.000         1.000         1.000
+ FLOW           1.000         1.000         1.000         1.000
+ SELFDET        1.000         1.000         1.000         1.000         1.000
+ PERSEFF        1.000         1.000         1.000         1.000         1.000
+ STRENGTH       1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              PERSEFF       STRENGTH
+              ________      ________
+ PERSEFF        1.000
+ STRENGTH       1.000         1.000
+
+
+SAMPLE STATISTICS
+
+
+     ESTIMATED SAMPLE STATISTICS
+
+
+           Means
+              FOP           POSEM         NEGEM         FLOW          SELFDET
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Means
+              PERSEFF       STRENGTH
+              ________      ________
+                0.000         0.000
+
+
+           Covariances
+              FOP           POSEM         NEGEM         FLOW          SELFDET
+              ________      ________      ________      ________      ________
+ FOP            0.771
+ POSEM          0.127         0.804
+ NEGEM         -0.066         0.013         0.839
+ FLOW           0.042        -0.007        -0.015         0.589
+ SELFDET        0.016        -0.022        -0.017        -0.005         0.646
+ PERSEFF        0.030        -0.027         0.010        -0.029        -0.003
+ STRENGTH       0.031        -0.029         0.045         0.012        -0.024
+
+
+           Covariances
+              PERSEFF       STRENGTH
+              ________      ________
+ PERSEFF        0.471
+ STRENGTH       0.022         0.525
+
+
+           Correlations
+              FOP           POSEM         NEGEM         FLOW          SELFDET
+              ________      ________      ________      ________      ________
+ FOP            1.000
+ POSEM          0.161         1.000
+ NEGEM         -0.082         0.016         1.000
+ FLOW           0.063        -0.011        -0.021         1.000
+ SELFDET        0.022        -0.031        -0.023        -0.008         1.000
+ PERSEFF        0.051        -0.044         0.016        -0.055        -0.006
+ STRENGTH       0.049        -0.044         0.068         0.021        -0.041
+
+
+           Correlations
+              PERSEFF       STRENGTH
+              ________      ________
+ PERSEFF        1.000
+ STRENGTH       0.044         1.000
+
+
+     MAXIMUM LOG-LIKELIHOOD VALUE FOR THE UNRESTRICTED (H1) MODEL IS -4313.728
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     FOP                   0.000      -0.534      -3.404    0.19%      -0.642     -0.147      0.051
+             514.000       0.771       0.620       1.805    0.19%       0.286      0.726
+     POSEM                 0.000      -0.096      -2.360    0.19%      -0.802     -0.145      0.102
+             514.000       0.804      -0.245       2.625    0.19%       0.291      0.705
+     NEGEM                 0.000       1.575      -1.776    0.19%      -0.683     -0.406     -0.243
+             514.000       0.839       3.315       4.173    0.19%      -0.038      0.603
+     FLOW                  0.000      -0.342      -3.017    0.19%      -0.502     -0.108      0.038
+             514.000       0.589       1.836       2.703    0.19%       0.142      0.551
+     SELFDET               0.000      -1.473      -4.325    0.19%      -0.392     -0.040      0.065
+             514.000       0.646       4.641       1.771    0.19%       0.193      0.573
+     PERSEFF               0.000       0.276      -3.397    0.19%      -0.411     -0.126     -0.038
+             514.000       0.471       4.934       3.477    0.19%       0.067      0.417
+     STRENGTH              0.000      -0.470      -4.137    0.19%      -0.417     -0.129     -0.009
+             514.000       0.525       4.502       2.770    0.19%       0.118      0.470
+
+RANDOM STARTS RESULTS RANKED FROM THE BEST TO THE WORST LOGLIKELIHOOD VALUES
+
+
+36 perturbed starting value run(s) did not converge or were rejected in the third stage.
+Final stage loglikelihood values at local maxima, seeds, and initial stage start numbers:
+
+           -3875.469  298275           418
+           -3875.469  228459           947
+           -3875.469  392751           480
+           -3875.469  264521           929
+           -3875.469  642909           251
+           -3875.469  425929           508
+           -3875.469  921023           782
+           -3875.469  383902           673
+           -3875.469  534483           290
+           -3875.469  303634           169
+           -3875.469  213189           605
+           -3875.469  464179           106
+           -3875.469  471040           403
+           -3875.469  435506           988
+           -3875.469  231281           542
+           -3875.469  691234           250
+           -3875.469  802644           874
+           -3875.469  762461           425
+           -3875.469  371737           532
+           -3875.469  805768           879
+           -3875.469  263268           165
+           -3875.469  326091           759
+           -3875.469  465160           862
+           -3875.469  327140           678
+           -3875.469  192071           142
+           -3875.469  679615           942
+           -3875.469  392418           28
+           -3875.469  526324           178
+           -3875.469  677720           681
+           -3875.469  573367           986
+           -3875.469  641794           591
+           -3875.469  760599           832
+           -3875.469  283492           435
+           -3875.469  241197           747
+           -3875.469  471438           252
+           -3875.469  738393           619
+           -3875.469  15270            610
+           -3875.469  442072           625
+           -3875.469  985387           381
+           -3875.469  903369           134
+           -3875.469  569131           26
+           -3875.469  954914           911
+           -3875.469  751153           110
+           -3875.469  246575           291
+           -3875.469  655497           376
+           -3875.469  118438           601
+           -3875.469  134830           780
+           -3875.469  92689            304
+           -3875.469  354208           196
+           -3875.469  413564           535
+           -3875.469  387701           275
+           -3875.469  206099           363
+           -3875.469  39810            966
+           -3875.469  378393           509
+           -3875.469  319144           176
+           -3875.469  535804           111
+           -3875.469  404510           442
+           -3875.469  172913           557
+           -3875.469  626891           32
+           -3875.469  327475           518
+           -3875.469  972873           157
+           -3875.469  646573           741
+           -3875.469  887676           22
+           -3875.469  879338           309
+           -3875.469  721392           768
+           -3875.469  137888           901
+           -3875.469  954354           840
+           -3875.469  248742           556
+           -3875.469  466971           109
+           -3875.469  791396           243
+           -3875.469  882750           646
+           -3875.469  372176           23
+           -3875.469  431271           943
+           -3875.469  856612           700
+           -3875.469  722748           346
+           -3875.469  520865           763
+           -3875.469  582296           452
+           -3875.469  777492           972
+           -3875.469  784664           75
+           -3875.469  614009           317
+           -3875.469  604861           800
+           -3875.469  638977           643
+           -3875.469  288738           940
+           -3875.469  775881           778
+           -3875.469  663090           906
+           -3875.469  342019           301
+           -3875.469  315029           471
+           -3875.469  688839           273
+           -3875.469  96617            955
+           -3875.469  798839           312
+           -3875.469  179022           687
+           -3875.469  502157           799
+           -3875.469  518828           432
+           -3875.469  990504           827
+           -3875.469  195873           6
+           -3875.469  569833           85
+           -3875.469  478341           731
+           -3875.469  562716           300
+           -3875.469  496344           808
+           -3875.469  443442           380
+           -3875.469  105656           909
+           -3875.469  39136            226
+           -3875.469  763285           620
+           -3875.469  453915           975
+           -3875.469  939021           8
+           -3875.469  131063           843
+           -3875.469  436460           89
+           -3875.469  966014           37
+           -3904.757  319575           499
+           -3904.757  84013            598
+           -3904.757  710445           792
+           -3904.757  715255           523
+           -3904.757  370466           41
+           -3904.757  166851           638
+           -3904.757  871438           561
+           -3904.757  313407           132
+           -3904.757  177175           851
+           -3904.757  213532           503
+           -3904.757  879211           453
+           -3904.757  302046           863
+           -3904.757  281462           285
+           -3904.757  858804           534
+           -3904.757  35191            703
+           -3904.757  165853           105
+           -3904.757  809240           543
+           -3904.757  793035           187
+
+74 perturbed starting value run(s) did not converge or were rejected in the third stage.
+
+
+
+THE BEST LOGLIKELIHOOD VALUE HAS BEEN REPLICATED.  RERUN WITH AT LEAST TWICE THE
+RANDOM STARTS TO CHECK THAT THE BEST LOGLIKELIHOOD IS STILL OBTAINED AND REPLICATED.
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       44
+
+Loglikelihood
+
+          H0 Value                       -3875.469
+          H0 Scaling Correction Factor      1.2931
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                    7838.937
+          Bayesian (BIC)                  8025.595
+          Sample-Size Adjusted BIC        7885.932
+            (n* = (n + 2) / 24)
+
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON THE ESTIMATED MODEL
+
+    Latent
+   Classes
+
+       1        156.76425          0.30499
+       2        107.61468          0.20937
+       3        249.62107          0.48564
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON ESTIMATED POSTERIOR PROBABILITIES
+
+    Latent
+   Classes
+
+       1        156.76425          0.30499
+       2        107.61468          0.20937
+       3        249.62107          0.48564
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON THEIR MOST LIKELY LATENT CLASS MEMBERSHIP
+
+Class Counts and Proportions
+
+    Latent
+   Classes
+
+       1              150          0.29183
+       2              117          0.22763
+       3              247          0.48054
+
+
+CLASSIFICATION QUALITY
+
+     Entropy                         0.726
+
+
+Average Latent Class Probabilities for Most Likely Latent Class Membership (Row)
+by Latent Class (Column)
+
+           1        2        3
+
+    1   0.897    0.004    0.099
+    2   0.006    0.848    0.146
+    3   0.087    0.032    0.882
+
+
+Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+           1        2        3
+
+    1   0.859    0.005    0.137
+    2   0.005    0.922    0.073
+    3   0.059    0.068    0.872
+
+
+Logits for the Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+              1        2        3
+
+    1      1.838   -3.355    0.000
+    2     -2.661    2.538    0.000
+    3     -2.686   -2.548    0.000
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Latent Class 1
+
+ Means
+    FOP               -0.586      0.173     -3.377      0.001
+    POSEM             -0.065      0.094     -0.691      0.490
+    NEGEM              0.515      0.123      4.190      0.000
+    FLOW              -0.123      0.128     -0.964      0.335
+    SELFDET           -0.256      0.116     -2.202      0.028
+    PERSEFF            0.021      0.088      0.241      0.809
+    STRENGTH           0.108      0.092      1.171      0.242
+
+ Variances
+    FOP                1.018      0.142      7.174      0.000
+    POSEM              1.110      0.167      6.636      0.000
+    NEGEM              1.747      0.376      4.644      0.000
+    FLOW               1.266      0.229      5.529      0.000
+    SELFDET            1.394      0.279      5.001      0.000
+    PERSEFF            1.123      0.301      3.726      0.000
+    STRENGTH           1.118      0.289      3.872      0.000
+
+Latent Class 2
+
+ Means
+    FOP                0.080      0.078      1.027      0.305
+    POSEM             -0.093      0.107     -0.869      0.385
+    NEGEM             -0.207      0.115     -1.804      0.071
+    FLOW              -0.028      0.029     -0.973      0.331
+    SELFDET            0.036      0.030      1.201      0.230
+    PERSEFF           -0.044      0.032     -1.360      0.174
+    STRENGTH          -0.065      0.030     -2.152      0.031
+
+ Variances
+    FOP                0.304      0.052      5.867      0.000
+    POSEM              0.766      0.097      7.856      0.000
+    NEGEM              0.357      0.110      3.242      0.001
+    FLOW               0.032      0.007      4.382      0.000
+    SELFDET            0.041      0.013      3.144      0.002
+    PERSEFF            0.035      0.015      2.417      0.016
+    STRENGTH           0.036      0.007      5.118      0.000
+
+Latent Class 3
+
+ Means
+    FOP                0.333      0.111      3.013      0.003
+    POSEM              0.081      0.074      1.087      0.277
+    NEGEM             -0.234      0.138     -1.701      0.089
+    FLOW               0.090      0.050      1.793      0.073
+    SELFDET            0.145      0.080      1.820      0.069
+    PERSEFF            0.006      0.038      0.149      0.881
+    STRENGTH          -0.040      0.056     -0.711      0.477
+
+ Variances
+    FOP                0.488      0.049      9.909      0.000
+    POSEM              0.616      0.070      8.792      0.000
+    NEGEM              0.236      0.148      1.596      0.110
+    FLOW               0.387      0.049      7.853      0.000
+    SELFDET            0.375      0.108      3.462      0.001
+    PERSEFF            0.249      0.035      7.072      0.000
+    STRENGTH           0.353      0.050      7.126      0.000
+
+Categorical Latent Variables
+
+ Means
+    CL_FOP#1          -0.465      0.474     -0.981      0.327
+    CL_FOP#2          -0.841      0.292     -2.880      0.004
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.614E-04
+       (ratio of smallest to largest eigenvalue)
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Latent Class 1
+
+ Means
+    FOP               -0.581      0.158     -3.683      0.000
+    POSEM             -0.062      0.091     -0.680      0.497
+    NEGEM              0.390      0.077      5.029      0.000
+    FLOW              -0.110      0.109     -1.010      0.313
+    SELFDET           -0.217      0.086     -2.534      0.011
+    PERSEFF            0.020      0.083      0.241      0.809
+    STRENGTH           0.102      0.093      1.094      0.274
+
+ Variances
+    FOP                1.000      0.000    999.000    999.000
+    POSEM              1.000      0.000    999.000    999.000
+    NEGEM              1.000      0.000    999.000    999.000
+    FLOW               1.000      0.000    999.000    999.000
+    SELFDET            1.000      0.000    999.000    999.000
+    PERSEFF            1.000      0.000    999.000    999.000
+    STRENGTH           1.000      0.000    999.000    999.000
+
+Latent Class 2
+
+ Means
+    FOP                0.145      0.137      1.056      0.291
+    POSEM             -0.106      0.119     -0.889      0.374
+    NEGEM             -0.347      0.240     -1.445      0.148
+    FLOW              -0.158      0.158     -0.999      0.318
+    SELFDET            0.177      0.156      1.134      0.257
+    PERSEFF           -0.235      0.204     -1.150      0.250
+    STRENGTH          -0.341      0.173     -1.972      0.049
+
+ Variances
+    FOP                1.000      0.000    999.000    999.000
+    POSEM              1.000      0.000    999.000    999.000
+    NEGEM              1.000      0.000    999.000    999.000
+    FLOW               1.000      0.000    999.000    999.000
+    SELFDET            1.000      0.000    999.000    999.000
+    PERSEFF            1.000      0.000    999.000    999.000
+    STRENGTH           1.000      0.000    999.000    999.000
+
+Latent Class 3
+
+ Means
+    FOP                0.477      0.173      2.768      0.006
+    POSEM              0.103      0.098      1.047      0.295
+    NEGEM             -0.482      0.432     -1.117      0.264
+    FLOW               0.144      0.081      1.788      0.074
+    SELFDET            0.237      0.159      1.491      0.136
+    PERSEFF            0.011      0.076      0.149      0.881
+    STRENGTH          -0.067      0.095     -0.705      0.481
+
+ Variances
+    FOP                1.000      0.000    999.000    999.000
+    POSEM              1.000      0.000    999.000    999.000
+    NEGEM              1.000      0.000    999.000    999.000
+    FLOW               1.000      0.000    999.000    999.000
+    SELFDET            1.000      0.000    999.000    999.000
+    PERSEFF            1.000      0.000    999.000    999.000
+    STRENGTH           1.000      0.000    999.000    999.000
+
+
+R-SQUARE
+
+Class 1
+
+Class 2
+
+Class 3
+
+
+TECHNICAL 11 OUTPUT
+
+     Random Starts Specifications for the k-1 Class Analysis Model
+        Number of initial stage random starts                1000
+        Number of final stage optimizations                   200
+
+
+
+     VUONG-LO-MENDELL-RUBIN LIKELIHOOD RATIO TEST FOR 2 (H0) VERSUS 3 CLASSES
+
+          H0 Loglikelihood Value                        -3976.128
+          2 Times the Loglikelihood Difference            201.319
+          Difference in the Number of Parameters               15
+          Mean                                             87.479
+          Standard Deviation                              117.451
+          P-Value                                          0.1236
+
+     LO-MENDELL-RUBIN ADJUSTED LRT TEST
+
+          Value                                           199.191
+          P-Value                                          0.1257
+
+
+TECHNICAL 14 OUTPUT
+
+     Random Starts Specifications for the k-1 Class Analysis Model
+        Number of initial stage random starts                1000
+        Number of final stage optimizations                   200
+
+     Random Starts Specification for the k-1 Class Model for Generated Data
+        Number of initial stage random starts                   0
+        Number of final stage optimizations for the
+           initial stage random starts                          0
+     Random Starts Specification for the k Class Model for Generated Data
+        Number of initial stage random starts                 500
+        Number of final stage optimizations                   100
+     Number of bootstrap draws requested                   Varies
+
+
+     PARAMETRIC BOOTSTRAPPED LIKELIHOOD RATIO TEST FOR 2 (H0) VERSUS 3 CLASSES
+
+          H0 Loglikelihood Value                        -3976.128
+          2 Times the Loglikelihood Difference            201.319
+          Difference in the Number of Parameters               15
+          Approximate P-Value                              0.0000
+          Successful Bootstrap Draws                            5
+
+     WARNING:  OF THE 5 BOOTSTRAP DRAWS, 5 DRAWS HAD BOTH A SMALLER LRT VALUE THAN THE
+     OBSERVED LRT VALUE AND NOT A REPLICATED BEST LOGLIKELIHOOD VALUE FOR THE 3-CLASS MODEL.
+     THIS MEANS THAT THE P-VALUE MAY NOT BE TRUSTWORTHY DUE TO LOCAL MAXIMA.
+     INCREASE THE NUMBER OF RANDOM STARTS USING THE LRTSTARTS OPTION.
+
+
+
+PLOT INFORMATION
+
+The following plots are available:
+
+  Histograms (sample values)
+  Scatterplots (sample values)
+  Sample means
+  Estimated means, medians, modes, and percentiles
+  Sample and estimated means
+  Observed individual values
+  Estimated means and observed individual values
+  Estimated overall and class-specific distributions
+
+DIAGRAM INFORMATION
+
+  Mplus diagrams are currently not available for Mixture analysis.
+  No diagram output was produced.
+
+
+     Beginning Time:  12:55:17
+        Ending Time:  12:56:24
+       Elapsed Time:  00:01:07
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2021 Muthen & Muthen

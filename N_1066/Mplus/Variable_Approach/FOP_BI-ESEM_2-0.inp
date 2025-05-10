@@ -1,0 +1,97 @@
+Title:
+Etude BI ESEM Fonctionnement Optimal Psychologique
+On élimine tous les items ayant plus de 0.6 de résidus standardisés
+
+Data:
+File is Base_1066_noheader_2017-06.dat;
+
+Variable:
+Names are
+Id Sexe Age Situfam Enfant Situpro Contract Missdays Income 
+Educatio Compsize Manager CSP1 CSP2 Sector Zipcode ZoneFR1 ZoneFR2 
+MHCA1-MHCA14 MHCB1-MHCB14 MHCC1-MHCC14 PE1-PE20 Flux1-Flux13 
+Cap1 Cap2 Cap3 AD1-AD10 EfP1-EfP8 UF1-UF6 HSE1-HSE35 
+ALQ1-ALQ16 abs1-abs11 Imp1-Imp6 Force1-Force24 
+Inwork ExperDP PratDP cabs1-cabs7;
+
+Idvariable is Id;
+Missing are all (999);
+
+Usevariables are
+PE11 PE12 PE14 PE16
+PE3 PE6 PE17 PE18 
+Flux2 Flux4 Flux5 Flux6 Flux7 Flux8 
+Flux9 
+AD2 AD3 AD4 AD5 AD6 AD8 AD9 AD10
+EfP4 EfP5 EfP6 EfP7 EfP8
+UF2 UF3 UF4 UF6 ;
+
+Analysis:
+Estimator is MLR;
+Rotation is Target (Orthogonal) ;
+
+Model:
+FOP by 
+PE11 PE12 PE14 PE16
+PE3 PE6 PE17 PE18 
+Flux2 Flux4 Flux5 Flux6 Flux7 Flux8 Flux9 
+AD2 AD3 AD4 AD5 AD6 AD8 AD9 AD10
+EfP4 EfP5 EfP6 EfP7 EfP8
+UF2 UF3 UF4 UF6 (*1);
+
+PosEm by 
+PE11 PE12 PE14 PE16 
+PE3~0 PE6~0 PE17~0 PE18~0 
+Flux2~0 Flux4~0 Flux5~0 Flux6~0 Flux7~0 Flux8~0 Flux9~0 
+AD2~0 AD3~0 AD4~0 AD5~0 AD6~0 AD8~0 AD9~0 AD10~0
+EfP4~0 EfP5~0 EfP6~0 EfP7~0 EfP8~0
+UF2~0 UF3~0 UF4~0 UF6~0 (*1);
+
+NegEm by 
+PE11~0 PE12~0 PE14~0 PE16~0 
+PE3 PE6 PE17 PE18 
+Flux2~0 Flux4~0 Flux5~0 Flux6~0 Flux7~0 Flux8~0 Flux9~0 
+AD2~0 AD3~0 AD4~0 AD5~0 AD6~0 AD8~0 AD9~0 AD10~0
+EfP4~0 EfP5~0 EfP6~0 EfP7~0 EfP8~0
+UF2~0 UF3~0 UF4~0 UF6~0 (*1);
+
+Flow by 
+PE11~0 PE12~0 PE14~0 PE16~0 
+PE3~0 PE6~0 PE17~0 PE18~0 
+Flux2 Flux4 Flux5 Flux6 Flux7 
+Flux8 Flux9 
+AD2~0 AD3~0 AD4~0 AD5~0 AD6~0 AD8~0 AD9~0 AD10~0
+EfP4~0 EfP5~0 EfP6~0 EfP7~0 EfP8~0
+UF2~0 UF3~0 UF4~0 UF6~0 (*1);
+
+SelfDet by 
+PE11~0 PE12~0 PE14~0 PE16~0 
+PE3~0 PE6~0 PE17~0 PE18~0
+Flux2~0 Flux4~0 Flux5~0 Flux6~0 Flux7~0 
+Flux8~0 Flux9~0 
+AD2 AD3 AD4 AD5 AD6 AD8 AD9 AD10
+EfP4~0 EfP5~0 EfP6~0 EfP7~0 EfP8~0
+UF2~0 UF3~0 UF4~0 UF6~0 (*1);
+
+Perseff by 
+PE11~0 PE12~0 PE14~0 PE16~0 
+PE3~0 PE6~0 PE17~0 PE18~0
+Flux2~0 Flux4~0 Flux5~0 Flux6~0 Flux7~0 
+Flux8~0 Flux9~0 
+AD2~0 AD3~0 AD4~0 AD5~0 AD6~0 AD8~0 AD9~0 AD10~0
+EfP4~0 EfP5~0 EfP6~0 EfP7~0 EfP8~0
+UF2~0 UF3~0 UF4~0 UF6~0 (*1);
+
+Strength by 
+PE11~0 PE12~0 PE14~0 PE16~0 
+PE3~0 PE6~0 PE17~0 PE18~0
+Flux2~0 Flux4~0 Flux5~0 Flux6~0 Flux7~0 
+Flux8~0 Flux9~0 
+AD2~0 AD3~0 AD4~0 AD5~0 AD6~0 AD8~0 AD9~0 AD10~0
+EfP4~0 EfP5~0 EfP6~0 EfP7~0 EfP8~0
+UF2 UF3 UF4 UF6 (*1);
+
+
+Output:
+STDYX Modindices(all) Res Tech4;
+

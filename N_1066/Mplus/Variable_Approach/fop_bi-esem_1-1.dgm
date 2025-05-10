@@ -1,0 +1,771 @@
+VERSION 1.0.0
+INPUT
+TITLE:
+
+Etude BI ESEM Fonctionnement Optimal Psychologique
+On élimine tous les items ayant plus de 0.6 de résidus standardisés
+
+DATA:
+File is Base_1066_noheader_2017-06.dat;
+VARIABLE:
+Names are
+Id Sexe Age Situfam Enfant Situpro Contract Missdays Income
+Educatio Compsize Manager CSP1 CSP2 Sector Zipcode ZoneFR1 ZoneFR2
+MHCA1-MHCA14 MHCB1-MHCB14 MHCC1-MHCC14 PE1-PE20 Flux1-Flux13
+Cap1 Cap2 Cap3 AD1-AD10 EfP1-EfP8 UF1-UF6 HSE1-HSE35
+ALQ1-ALQ16 abs1-abs11 Imp1-Imp6 Force1-Force24
+Inwork ExperDP PratDP cabs1-cabs7;
+Idvariable is Id;
+Missing are all (999);
+Usevariables are
+PE11 PE14 PE15
+PE3 PE6 PE10
+FLUX2 FLUX5 FLUX6 FLUX7 FLUX8
+AD2 AD3 AD5 AD10
+EFP3 EFP5 EFP6 EFP7 EFP8
+UF2 UF3 UF4 UF6
+ANALYSIS:
+Estimator is MLR;
+Rotation is Target (Orthogonal) ;
+OUTPUT:
+STDYX Modindices(all) Res Tech4;
+MODEL:
+FOP by
+PE11 PE14 PE15
+PE3 PE6 PE10
+FLUX2 FLUX5 FLUX6 FLUX7 FLUX8
+AD2 AD3 AD5 AD10
+EFP3 EFP5 EFP6 EFP7 EFP8
+UF2 UF3 UF4 UF6 (*1);
+PosEm by
+PE11 PE14 PE15
+PE3~0 PE6~0 PE10~0
+Flux2~0 Flux5~0 Flux6~0 Flux7~0 Flux8~0
+AD2~0 AD3~0 AD5~0 AD10~0
+EfP3~0 EfP5~0 EfP6~0 EfP7~0 EfP8~0
+UF2~0 UF3~0 UF4~0 UF6~0 (*1);
+NegEm by
+PE11~0 PE14~0 PE15~0
+PE3 PE6 PE10
+Flux2~0 Flux5~0 Flux6~0 Flux7~0 Flux8~0
+AD2~0 AD3~0 AD5~0 AD10~0
+EfP3~0 EfP5~0 EfP6~0 EfP7~0 EfP8~0
+UF2~0 UF3~0 UF4~0 UF6~0 (*1);
+Flow by
+PE11~0 PE14~0 PE15~0
+PE3~0 PE6~0 PE10~0
+Flux2 Flux5 Flux6 Flux7 Flux8
+AD2~0 AD3~0 AD5~0 AD10~0
+EfP3~0 EfP5~0 EfP6~0 EfP7~0 EfP8~0
+UF2~0 UF3~0 UF4~0 UF6~0 (*1);
+SelfDet by
+PE11~0 PE14~0 PE15~0
+PE3~0 PE6~0 PE10~0
+Flux2~0 Flux5~0 Flux6~0 Flux7~0 Flux8~0
+AD2 AD3 AD5 AD10
+EfP3~0 EfP5~0 EfP6~0 EfP7~0 EfP8~0
+UF2~0 UF3~0 UF4~0 UF6~0 (*1);
+Perseff by
+PE11~0 PE14~0 PE15~0
+PE3~0 PE6~0 PE10~0
+Flux2~0 Flux5~0 Flux6~0 Flux7~0 Flux8~0
+AD2~0 AD3~0 AD5~0 AD10~0
+EfP3 EfP5 EfP6 EfP7 EfP8
+UF2~0 UF3~0 UF4~0 UF6~0 (*1);
+Strength by
+PE11~0 PE14~0 PE15~0
+PE3~0 PE6~0 PE10~0
+Flux2~0 Flux5~0 Flux6~0 Flux7~0 Flux8~0
+AD2~0 AD3~0 AD5~0 AD10~0
+EfP3~0 EfP5~0 EfP6~0 EfP7~0 EfP8~0
+UF2 UF3 UF4 UF6 (*1);
+INPUT_END
+2
+2
+0
+2
+1
+GENERAL
+0
+24
+7
+0
+pe11 pe14 pe15 pe3 pe6 pe10 flux2 flux5 flux6 flux7 flux8 ad2 ad3 ad5 ad10 efp3 efp5 efp6 efp7 efp8 uf2 uf3 uf4 uf6 fop posem negem flow selfdet perseff strength
+1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 0 0 0 0 0 0 0
+0
+7
+fop
+pe11 pe14 pe15 pe3 pe6 pe10 flux2 flux5 flux6 flux7 flux8 ad2 ad3 ad5 ad10 efp3 efp5 efp6 efp7 efp8 uf2 uf3 uf4 uf6
+posem
+pe11 pe14 pe15 pe3 pe6 pe10 flux2 flux5 flux6 flux7 flux8 ad2 ad3 ad5 ad10 efp3 efp5 efp6 efp7 efp8 uf2 uf3 uf4 uf6
+negem
+pe11 pe14 pe15 pe3 pe6 pe10 flux2 flux5 flux6 flux7 flux8 ad2 ad3 ad5 ad10 efp3 efp5 efp6 efp7 efp8 uf2 uf3 uf4 uf6
+flow
+pe11 pe14 pe15 pe3 pe6 pe10 flux2 flux5 flux6 flux7 flux8 ad2 ad3 ad5 ad10 efp3 efp5 efp6 efp7 efp8 uf2 uf3 uf4 uf6
+selfdet
+pe11 pe14 pe15 pe3 pe6 pe10 flux2 flux5 flux6 flux7 flux8 ad2 ad3 ad5 ad10 efp3 efp5 efp6 efp7 efp8 uf2 uf3 uf4 uf6
+perseff
+pe11 pe14 pe15 pe3 pe6 pe10 flux2 flux5 flux6 flux7 flux8 ad2 ad3 ad5 ad10 efp3 efp5 efp6 efp7 efp8 uf2 uf3 uf4 uf6
+strength
+pe11 pe14 pe15 pe3 pe6 pe10 flux2 flux5 flux6 flux7 flux8 ad2 ad3 ad5 ad10 efp3 efp5 efp6 efp7 efp8 uf2 uf3 uf4 uf6
+1 1 fop pe11    0.553    0.048
+1 1 fop pe14    0.608    0.061
+1 1 fop pe15    0.522    0.071
+1 1 fop pe3   -0.244    0.051
+1 1 fop pe6   -0.208    0.047
+1 1 fop pe10   -0.195    0.047
+1 1 fop flux2    0.652    0.061
+1 1 fop flux5    0.694    0.061
+1 1 fop flux6    0.679    0.047
+1 1 fop flux7    0.628    0.048
+1 1 fop flux8    0.654    0.056
+1 1 fop ad2    0.467    0.059
+1 1 fop ad3    0.545    0.048
+1 1 fop ad5    0.612    0.045
+1 1 fop ad10    0.463    0.054
+1 1 fop efp3    0.611    0.043
+1 1 fop efp5    0.594    0.038
+1 1 fop efp6    0.609    0.046
+1 1 fop efp7    0.572    0.044
+1 1 fop efp8    0.570    0.035
+1 1 fop uf2    0.490    0.076
+1 1 fop uf3    0.746    0.056
+1 1 fop uf4    0.518    0.098
+1 1 fop uf6    0.490    0.093
+1 1 posem pe11    0.784    0.049
+1 1 posem pe14    0.906    0.052
+1 1 posem pe15    0.799    0.048
+1 1 posem pe3    0.022    0.034
+1 1 posem pe6    0.014    0.027
+1 1 posem pe10   -0.091    0.038
+1 1 posem flux2    0.145    0.041
+1 1 posem flux5    0.141    0.034
+1 1 posem flux6    0.036    0.034
+1 1 posem flux7    0.068    0.026
+1 1 posem flux8    0.036    0.032
+1 1 posem ad2    0.016    0.037
+1 1 posem ad3    0.057    0.032
+1 1 posem ad5    0.041    0.035
+1 1 posem ad10    0.051    0.033
+1 1 posem efp3   -0.085    0.031
+1 1 posem efp5   -0.021    0.022
+1 1 posem efp6    0.013    0.026
+1 1 posem efp7    0.019    0.031
+1 1 posem efp8    0.023    0.020
+1 1 posem uf2   -0.114    0.035
+1 1 posem uf3   -0.175    0.024
+1 1 posem uf4    0.000    0.053
+1 1 posem uf6    0.042    0.046
+1 1 negem pe11   -0.027    0.040
+1 1 negem pe14   -0.040    0.027
+1 1 negem pe15    0.024    0.040
+1 1 negem pe3    0.779    0.056
+1 1 negem pe6    0.903    0.054
+1 1 negem pe10    0.854    0.052
+1 1 negem flux2    0.065    0.032
+1 1 negem flux5   -0.101    0.032
+1 1 negem flux6   -0.047    0.034
+1 1 negem flux7    0.078    0.026
+1 1 negem flux8   -0.012    0.026
+1 1 negem ad2   -0.144    0.030
+1 1 negem ad3    0.003    0.035
+1 1 negem ad5   -0.120    0.037
+1 1 negem ad10   -0.004    0.036
+1 1 negem efp3    0.033    0.029
+1 1 negem efp5   -0.004    0.022
+1 1 negem efp6   -0.022    0.025
+1 1 negem efp7    0.053    0.023
+1 1 negem efp8    0.004    0.021
+1 1 negem uf2    0.049    0.028
+1 1 negem uf3    0.032    0.024
+1 1 negem uf4    0.025    0.033
+1 1 negem uf6    0.003    0.025
+1 1 flow pe11    0.151    0.038
+1 1 flow pe14    0.140    0.046
+1 1 flow pe15    0.098    0.059
+1 1 flow pe3   -0.024    0.037
+1 1 flow pe6    0.058    0.028
+1 1 flow pe10   -0.059    0.036
+1 1 flow flux2    0.617    0.059
+1 1 flow flux5    0.769    0.055
+1 1 flow flux6    0.607    0.056
+1 1 flow flux7    0.758    0.047
+1 1 flow flux8    0.658    0.055
+1 1 flow ad2    0.040    0.048
+1 1 flow ad3   -0.016    0.037
+1 1 flow ad5    0.015    0.039
+1 1 flow ad10   -0.060    0.037
+1 1 flow efp3    0.078    0.040
+1 1 flow efp5    0.007    0.024
+1 1 flow efp6    0.057    0.035
+1 1 flow efp7   -0.017    0.032
+1 1 flow efp8   -0.004    0.022
+1 1 flow uf2   -0.084    0.045
+1 1 flow uf3   -0.116    0.029
+1 1 flow uf4   -0.120    0.067
+1 1 flow uf6    0.063    0.062
+1 1 selfdet pe11    0.175    0.047
+1 1 selfdet pe14    0.027    0.035
+1 1 selfdet pe15   -0.032    0.049
+1 1 selfdet pe3    0.008    0.035
+1 1 selfdet pe6   -0.076    0.028
+1 1 selfdet pe10   -0.159    0.038
+1 1 selfdet flux2    0.033    0.048
+1 1 selfdet flux5   -0.009    0.038
+1 1 selfdet flux6    0.010    0.041
+1 1 selfdet flux7   -0.018    0.029
+1 1 selfdet flux8   -0.016    0.032
+1 1 selfdet ad2    0.754    0.052
+1 1 selfdet ad3    0.574    0.053
+1 1 selfdet ad5    0.640    0.055
+1 1 selfdet ad10    0.947    0.049
+1 1 selfdet efp3    0.032    0.030
+1 1 selfdet efp5   -0.028    0.020
+1 1 selfdet efp6    0.063    0.027
+1 1 selfdet efp7   -0.004    0.025
+1 1 selfdet efp8   -0.017    0.017
+1 1 selfdet uf2   -0.075    0.036
+1 1 selfdet uf3   -0.002    0.027
+1 1 selfdet uf4   -0.123    0.049
+1 1 selfdet uf6    0.066    0.053
+1 1 perseff pe11    0.114    0.047
+1 1 perseff pe14   -0.027    0.042
+1 1 perseff pe15   -0.064    0.060
+1 1 perseff pe3   -0.093    0.040
+1 1 perseff pe6    0.090    0.034
+1 1 perseff pe10    0.041    0.037
+1 1 perseff flux2    0.103    0.044
+1 1 perseff flux5    0.082    0.039
+1 1 perseff flux6   -0.158    0.043
+1 1 perseff flux7   -0.013    0.032
+1 1 perseff flux8    0.073    0.036
+1 1 perseff ad2   -0.039    0.046
+1 1 perseff ad3    0.032    0.037
+1 1 perseff ad5    0.055    0.040
+1 1 perseff ad10    0.010    0.040
+1 1 perseff efp3    0.276    0.044
+1 1 perseff efp5    0.518    0.034
+1 1 perseff efp6    0.607    0.038
+1 1 perseff efp7    0.521    0.039
+1 1 perseff efp8    0.532    0.029
+1 1 perseff uf2   -0.029    0.053
+1 1 perseff uf3   -0.123    0.036
+1 1 perseff uf4    0.007    0.062
+1 1 perseff uf6    0.139    0.083
+1 1 strength pe11    0.112    0.047
+1 1 strength pe14   -0.073    0.038
+1 1 strength pe15   -0.087    0.054
+1 1 strength pe3    0.051    0.034
+1 1 strength pe6    0.019    0.030
+1 1 strength pe10   -0.015    0.040
+1 1 strength flux2   -0.059    0.042
+1 1 strength flux5   -0.049    0.041
+1 1 strength flux6   -0.002    0.050
+1 1 strength flux7    0.007    0.027
+1 1 strength flux8   -0.017    0.029
+1 1 strength ad2   -0.106    0.047
+1 1 strength ad3    0.053    0.058
+1 1 strength ad5    0.048    0.043
+1 1 strength ad10    0.013    0.044
+1 1 strength efp3    0.010    0.044
+1 1 strength efp5    0.046    0.029
+1 1 strength efp6   -0.007    0.024
+1 1 strength efp7    0.039    0.021
+1 1 strength efp8    0.040    0.030
+1 1 strength uf2    0.197    0.182
+1 1 strength uf3    0.215    0.196
+1 1 strength uf4    0.339    0.223
+1 1 strength uf6    0.818    0.286
+2 1 posem fop    0.000    0.000
+2 1 negem fop    0.000    0.000
+2 1 negem posem    0.000    0.000
+2 1 flow fop    0.000    0.000
+2 1 flow posem    0.000    0.000
+2 1 flow negem    0.000    0.000
+2 1 selfdet fop    0.000    0.000
+2 1 selfdet posem    0.000    0.000
+2 1 selfdet negem    0.000    0.000
+2 1 selfdet flow    0.000    0.000
+2 1 perseff fop    0.000    0.000
+2 1 perseff posem    0.000    0.000
+2 1 perseff negem    0.000    0.000
+2 1 perseff flow    0.000    0.000
+2 1 perseff selfdet    0.000    0.000
+2 1 strength fop    0.000    0.000
+2 1 strength posem    0.000    0.000
+2 1 strength negem    0.000    0.000
+2 1 strength flow    0.000    0.000
+2 1 strength selfdet    0.000    0.000
+2 1 strength perseff    0.000    0.000
+4 1 pe11    1.091    0.076
+4 1 pe14    0.204    0.057
+4 1 pe15    0.942    0.080
+4 1 pe3    0.725    0.063
+4 1 pe6    0.496    0.068
+4 1 pe10    0.857    0.077
+4 1 flux2    0.873    0.072
+4 1 flux5    0.501    0.054
+4 1 flux6    0.721    0.058
+4 1 flux7    0.405    0.045
+4 1 flux8    0.457    0.038
+4 1 ad2    0.488    0.048
+4 1 ad3    0.938    0.064
+4 1 ad5    0.962    0.063
+4 1 ad10    0.832    0.082
+4 1 efp3    0.546    0.043
+4 1 efp5    0.293    0.026
+4 1 efp6    0.357    0.028
+4 1 efp7    0.284    0.032
+4 1 efp8    0.213    0.019
+4 1 uf2    0.388    0.039
+4 1 uf3    0.228    0.064
+4 1 uf4    0.450    0.046
+4 1 uf6    0.104    0.495
+5 1 fop    1.000    0.000
+5 1 posem    1.000    0.000
+5 1 negem    1.000    0.000
+5 1 flow    1.000    0.000
+5 1 selfdet    1.000    0.000
+5 1 perseff    1.000    0.000
+5 1 strength    1.000    0.000
+11 1 fop pe11    0.383    0.032
+11 1 fop pe14    0.510    0.049
+11 1 fop pe15    0.381    0.050
+11 1 fop pe3   -0.206    0.042
+11 1 fop pe6   -0.177    0.040
+11 1 fop pe10   -0.151    0.037
+11 1 fop flux2    0.497    0.044
+11 1 fop flux5    0.546    0.045
+11 1 fop flux6    0.540    0.034
+11 1 fop flux7    0.533    0.037
+11 1 fop flux8    0.568    0.043
+11 1 fop ad2    0.408    0.050
+11 1 fop ad3    0.435    0.036
+11 1 fop ad5    0.461    0.031
+11 1 fop ad10    0.332    0.037
+11 1 fop efp3    0.608    0.036
+11 1 fop efp5    0.620    0.032
+11 1 fop efp6    0.580    0.037
+11 1 fop efp7    0.607    0.039
+11 1 fop efp8    0.628    0.028
+11 1 fop uf2    0.587    0.088
+11 1 fop uf3    0.790    0.051
+11 1 fop uf4    0.558    0.104
+11 1 fop uf6    0.480    0.087
+11 1 posem pe11    0.542    0.032
+11 1 posem pe14    0.759    0.041
+11 1 posem pe15    0.584    0.032
+11 1 posem pe3    0.018    0.029
+11 1 posem pe6    0.012    0.023
+11 1 posem pe10   -0.071    0.029
+11 1 posem flux2    0.110    0.031
+11 1 posem flux5    0.111    0.026
+11 1 posem flux6    0.029    0.027
+11 1 posem flux7    0.058    0.022
+11 1 posem flux8    0.032    0.028
+11 1 posem ad2    0.014    0.032
+11 1 posem ad3    0.046    0.026
+11 1 posem ad5    0.031    0.026
+11 1 posem ad10    0.036    0.023
+11 1 posem efp3   -0.084    0.031
+11 1 posem efp5   -0.022    0.023
+11 1 posem efp6    0.013    0.025
+11 1 posem efp7    0.020    0.033
+11 1 posem efp8    0.025    0.022
+11 1 posem uf2   -0.137    0.041
+11 1 posem uf3   -0.186    0.025
+11 1 posem uf4    0.000    0.057
+11 1 posem uf6    0.042    0.045
+11 1 negem pe11   -0.019    0.027
+11 1 negem pe14   -0.034    0.022
+11 1 negem pe15    0.017    0.029
+11 1 negem pe3    0.657    0.036
+11 1 negem pe6    0.771    0.034
+11 1 negem pe10    0.662    0.034
+11 1 negem flux2    0.050    0.024
+11 1 negem flux5   -0.079    0.025
+11 1 negem flux6   -0.037    0.027
+11 1 negem flux7    0.067    0.022
+11 1 negem flux8   -0.010    0.023
+11 1 negem ad2   -0.126    0.026
+11 1 negem ad3    0.002    0.028
+11 1 negem ad5   -0.090    0.028
+11 1 negem ad10   -0.003    0.026
+11 1 negem efp3    0.033    0.029
+11 1 negem efp5   -0.004    0.023
+11 1 negem efp6   -0.021    0.024
+11 1 negem efp7    0.056    0.025
+11 1 negem efp8    0.004    0.023
+11 1 negem uf2    0.059    0.034
+11 1 negem uf3    0.033    0.025
+11 1 negem uf4    0.027    0.036
+11 1 negem uf6    0.003    0.024
+11 1 flow pe11    0.105    0.026
+11 1 flow pe14    0.118    0.038
+11 1 flow pe15    0.072    0.043
+11 1 flow pe3   -0.020    0.032
+11 1 flow pe6    0.049    0.024
+11 1 flow pe10   -0.045    0.028
+11 1 flow flux2    0.470    0.044
+11 1 flow flux5    0.606    0.040
+11 1 flow flux6    0.483    0.042
+11 1 flow flux7    0.644    0.036
+11 1 flow flux8    0.572    0.044
+11 1 flow ad2    0.035    0.042
+11 1 flow ad3   -0.013    0.030
+11 1 flow ad5    0.011    0.030
+11 1 flow ad10   -0.043    0.026
+11 1 flow efp3    0.077    0.040
+11 1 flow efp5    0.007    0.025
+11 1 flow efp6    0.055    0.034
+11 1 flow efp7   -0.018    0.034
+11 1 flow efp8   -0.004    0.024
+11 1 flow uf2   -0.101    0.054
+11 1 flow uf3   -0.123    0.030
+11 1 flow uf4   -0.129    0.073
+11 1 flow uf6    0.061    0.061
+11 1 selfdet pe11    0.121    0.033
+11 1 selfdet pe14    0.023    0.029
+11 1 selfdet pe15   -0.023    0.036
+11 1 selfdet pe3    0.007    0.030
+11 1 selfdet pe6   -0.065    0.024
+11 1 selfdet pe10   -0.123    0.029
+11 1 selfdet flux2    0.026    0.037
+11 1 selfdet flux5   -0.007    0.030
+11 1 selfdet flux6    0.008    0.033
+11 1 selfdet flux7   -0.015    0.025
+11 1 selfdet flux8   -0.014    0.028
+11 1 selfdet ad2    0.659    0.039
+11 1 selfdet ad3    0.458    0.038
+11 1 selfdet ad5    0.481    0.037
+11 1 selfdet ad10    0.678    0.031
+11 1 selfdet efp3    0.032    0.030
+11 1 selfdet efp5   -0.030    0.021
+11 1 selfdet efp6    0.060    0.025
+11 1 selfdet efp7   -0.004    0.026
+11 1 selfdet efp8   -0.018    0.019
+11 1 selfdet uf2   -0.089    0.043
+11 1 selfdet uf3   -0.002    0.029
+11 1 selfdet uf4   -0.132    0.054
+11 1 selfdet uf6    0.065    0.052
+11 1 perseff pe11    0.079    0.032
+11 1 perseff pe14   -0.023    0.035
+11 1 perseff pe15   -0.047    0.044
+11 1 perseff pe3   -0.078    0.034
+11 1 perseff pe6    0.077    0.029
+11 1 perseff pe10    0.031    0.029
+11 1 perseff flux2    0.078    0.034
+11 1 perseff flux5    0.065    0.031
+11 1 perseff flux6   -0.125    0.034
+11 1 perseff flux7   -0.011    0.027
+11 1 perseff flux8    0.063    0.031
+11 1 perseff ad2   -0.034    0.040
+11 1 perseff ad3    0.026    0.030
+11 1 perseff ad5    0.041    0.030
+11 1 perseff ad10    0.007    0.029
+11 1 perseff efp3    0.275    0.043
+11 1 perseff efp5    0.541    0.032
+11 1 perseff efp6    0.578    0.034
+11 1 perseff efp7    0.553    0.040
+11 1 perseff efp8    0.586    0.029
+11 1 perseff uf2   -0.035    0.063
+11 1 perseff uf3   -0.131    0.037
+11 1 perseff uf4    0.008    0.067
+11 1 perseff uf6    0.136    0.082
+11 1 strength pe11    0.077    0.033
+11 1 strength pe14   -0.061    0.032
+11 1 strength pe15   -0.063    0.039
+11 1 strength pe3    0.043    0.029
+11 1 strength pe6    0.017    0.026
+11 1 strength pe10   -0.012    0.031
+11 1 strength flux2   -0.045    0.032
+11 1 strength flux5   -0.038    0.032
+11 1 strength flux6   -0.002    0.040
+11 1 strength flux7    0.006    0.023
+11 1 strength flux8   -0.015    0.025
+11 1 strength ad2   -0.092    0.041
+11 1 strength ad3    0.042    0.046
+11 1 strength ad5    0.036    0.032
+11 1 strength ad10    0.010    0.032
+11 1 strength efp3    0.010    0.044
+11 1 strength efp5    0.048    0.030
+11 1 strength efp6   -0.006    0.022
+11 1 strength efp7    0.041    0.022
+11 1 strength efp8    0.044    0.033
+11 1 strength uf2    0.236    0.218
+11 1 strength uf3    0.228    0.208
+11 1 strength uf4    0.365    0.239
+11 1 strength uf6    0.801    0.276
+12 1 posem fop    0.000    0.000
+12 1 negem fop    0.000    0.000
+12 1 negem posem    0.000    0.000
+12 1 flow fop    0.000    0.000
+12 1 flow posem    0.000    0.000
+12 1 flow negem    0.000    0.000
+12 1 selfdet fop    0.000    0.000
+12 1 selfdet posem    0.000    0.000
+12 1 selfdet negem    0.000    0.000
+12 1 selfdet flow    0.000    0.000
+12 1 perseff fop    0.000    0.000
+12 1 perseff posem    0.000    0.000
+12 1 perseff negem    0.000    0.000
+12 1 perseff flow    0.000    0.000
+12 1 perseff selfdet    0.000    0.000
+12 1 strength fop    0.000    0.000
+12 1 strength posem    0.000    0.000
+12 1 strength negem    0.000    0.000
+12 1 strength flow    0.000    0.000
+12 1 strength selfdet    0.000    0.000
+12 1 strength perseff    0.000    0.000
+14 1 pe11    0.521    0.036
+14 1 pe14    0.144    0.041
+14 1 pe15    0.502    0.039
+14 1 pe3    0.516    0.045
+14 1 pe6    0.362    0.050
+14 1 pe10    0.515    0.043
+14 1 flux2    0.508    0.036
+14 1 flux5    0.310    0.032
+14 1 flux6    0.457    0.033
+14 1 flux7    0.293    0.032
+14 1 flux8    0.345    0.031
+14 1 ad2    0.373    0.037
+14 1 ad3    0.597    0.036
+14 1 ad5    0.544    0.033
+14 1 ad10    0.427    0.041
+14 1 efp3    0.540    0.037
+14 1 efp5    0.319    0.027
+14 1 efp6    0.323    0.024
+14 1 efp7    0.320    0.037
+14 1 efp8    0.259    0.024
+14 1 uf2    0.558    0.056
+14 1 uf3    0.256    0.071
+14 1 uf4    0.521    0.051
+14 1 uf6    0.100    0.475
+15 1 fop    1.000    0.000
+15 1 posem    1.000    0.000
+15 1 negem    1.000    0.000
+15 1 flow    1.000    0.000
+15 1 selfdet    1.000    0.000
+15 1 perseff    1.000    0.000
+15 1 strength    1.000    0.000
+31 1 fop pe11    0.553    0.048
+31 1 fop pe14    0.608    0.061
+31 1 fop pe15    0.522    0.071
+31 1 fop pe3   -0.244    0.051
+31 1 fop pe6   -0.208    0.047
+31 1 fop pe10   -0.195    0.047
+31 1 fop flux2    0.652    0.061
+31 1 fop flux5    0.694    0.061
+31 1 fop flux6    0.679    0.047
+31 1 fop flux7    0.628    0.048
+31 1 fop flux8    0.654    0.056
+31 1 fop ad2    0.467    0.059
+31 1 fop ad3    0.545    0.048
+31 1 fop ad5    0.612    0.045
+31 1 fop ad10    0.463    0.054
+31 1 fop efp3    0.611    0.043
+31 1 fop efp5    0.594    0.038
+31 1 fop efp6    0.609    0.046
+31 1 fop efp7    0.572    0.044
+31 1 fop efp8    0.570    0.035
+31 1 fop uf2    0.490    0.076
+31 1 fop uf3    0.746    0.056
+31 1 fop uf4    0.518    0.098
+31 1 fop uf6    0.490    0.093
+31 1 posem pe11    0.784    0.049
+31 1 posem pe14    0.906    0.052
+31 1 posem pe15    0.799    0.048
+31 1 posem pe3    0.022    0.034
+31 1 posem pe6    0.014    0.027
+31 1 posem pe10   -0.091    0.038
+31 1 posem flux2    0.145    0.041
+31 1 posem flux5    0.141    0.034
+31 1 posem flux6    0.036    0.034
+31 1 posem flux7    0.068    0.026
+31 1 posem flux8    0.036    0.032
+31 1 posem ad2    0.016    0.037
+31 1 posem ad3    0.057    0.032
+31 1 posem ad5    0.041    0.035
+31 1 posem ad10    0.051    0.033
+31 1 posem efp3   -0.085    0.031
+31 1 posem efp5   -0.021    0.022
+31 1 posem efp6    0.013    0.026
+31 1 posem efp7    0.019    0.031
+31 1 posem efp8    0.023    0.020
+31 1 posem uf2   -0.114    0.035
+31 1 posem uf3   -0.175    0.024
+31 1 posem uf4    0.000    0.053
+31 1 posem uf6    0.042    0.046
+31 1 negem pe11   -0.027    0.040
+31 1 negem pe14   -0.040    0.027
+31 1 negem pe15    0.024    0.040
+31 1 negem pe3    0.779    0.056
+31 1 negem pe6    0.903    0.054
+31 1 negem pe10    0.854    0.052
+31 1 negem flux2    0.065    0.032
+31 1 negem flux5   -0.101    0.032
+31 1 negem flux6   -0.047    0.034
+31 1 negem flux7    0.078    0.026
+31 1 negem flux8   -0.012    0.026
+31 1 negem ad2   -0.144    0.030
+31 1 negem ad3    0.003    0.035
+31 1 negem ad5   -0.120    0.037
+31 1 negem ad10   -0.004    0.036
+31 1 negem efp3    0.033    0.029
+31 1 negem efp5   -0.004    0.022
+31 1 negem efp6   -0.022    0.025
+31 1 negem efp7    0.053    0.023
+31 1 negem efp8    0.004    0.021
+31 1 negem uf2    0.049    0.028
+31 1 negem uf3    0.032    0.024
+31 1 negem uf4    0.025    0.033
+31 1 negem uf6    0.003    0.025
+31 1 flow pe11    0.151    0.038
+31 1 flow pe14    0.140    0.046
+31 1 flow pe15    0.098    0.059
+31 1 flow pe3   -0.024    0.037
+31 1 flow pe6    0.058    0.028
+31 1 flow pe10   -0.059    0.036
+31 1 flow flux2    0.617    0.059
+31 1 flow flux5    0.769    0.055
+31 1 flow flux6    0.607    0.056
+31 1 flow flux7    0.758    0.047
+31 1 flow flux8    0.658    0.055
+31 1 flow ad2    0.040    0.048
+31 1 flow ad3   -0.016    0.037
+31 1 flow ad5    0.015    0.039
+31 1 flow ad10   -0.060    0.037
+31 1 flow efp3    0.078    0.040
+31 1 flow efp5    0.007    0.024
+31 1 flow efp6    0.057    0.035
+31 1 flow efp7   -0.017    0.032
+31 1 flow efp8   -0.004    0.022
+31 1 flow uf2   -0.084    0.045
+31 1 flow uf3   -0.116    0.029
+31 1 flow uf4   -0.120    0.067
+31 1 flow uf6    0.063    0.062
+31 1 selfdet pe11    0.175    0.047
+31 1 selfdet pe14    0.027    0.035
+31 1 selfdet pe15   -0.032    0.049
+31 1 selfdet pe3    0.008    0.035
+31 1 selfdet pe6   -0.076    0.028
+31 1 selfdet pe10   -0.159    0.038
+31 1 selfdet flux2    0.033    0.048
+31 1 selfdet flux5   -0.009    0.038
+31 1 selfdet flux6    0.010    0.041
+31 1 selfdet flux7   -0.018    0.029
+31 1 selfdet flux8   -0.016    0.032
+31 1 selfdet ad2    0.754    0.052
+31 1 selfdet ad3    0.574    0.053
+31 1 selfdet ad5    0.640    0.055
+31 1 selfdet ad10    0.947    0.049
+31 1 selfdet efp3    0.032    0.030
+31 1 selfdet efp5   -0.028    0.020
+31 1 selfdet efp6    0.063    0.027
+31 1 selfdet efp7   -0.004    0.025
+31 1 selfdet efp8   -0.017    0.017
+31 1 selfdet uf2   -0.075    0.036
+31 1 selfdet uf3   -0.002    0.027
+31 1 selfdet uf4   -0.123    0.049
+31 1 selfdet uf6    0.066    0.053
+31 1 perseff pe11    0.114    0.047
+31 1 perseff pe14   -0.027    0.042
+31 1 perseff pe15   -0.064    0.060
+31 1 perseff pe3   -0.093    0.040
+31 1 perseff pe6    0.090    0.034
+31 1 perseff pe10    0.041    0.037
+31 1 perseff flux2    0.103    0.044
+31 1 perseff flux5    0.082    0.039
+31 1 perseff flux6   -0.158    0.043
+31 1 perseff flux7   -0.013    0.032
+31 1 perseff flux8    0.073    0.036
+31 1 perseff ad2   -0.039    0.046
+31 1 perseff ad3    0.032    0.037
+31 1 perseff ad5    0.055    0.040
+31 1 perseff ad10    0.010    0.040
+31 1 perseff efp3    0.276    0.044
+31 1 perseff efp5    0.518    0.034
+31 1 perseff efp6    0.607    0.038
+31 1 perseff efp7    0.521    0.039
+31 1 perseff efp8    0.532    0.029
+31 1 perseff uf2   -0.029    0.053
+31 1 perseff uf3   -0.123    0.036
+31 1 perseff uf4    0.007    0.062
+31 1 perseff uf6    0.139    0.083
+31 1 strength pe11    0.112    0.047
+31 1 strength pe14   -0.073    0.038
+31 1 strength pe15   -0.087    0.054
+31 1 strength pe3    0.051    0.034
+31 1 strength pe6    0.019    0.030
+31 1 strength pe10   -0.015    0.040
+31 1 strength flux2   -0.059    0.042
+31 1 strength flux5   -0.049    0.041
+31 1 strength flux6   -0.002    0.050
+31 1 strength flux7    0.007    0.027
+31 1 strength flux8   -0.017    0.029
+31 1 strength ad2   -0.106    0.047
+31 1 strength ad3    0.053    0.058
+31 1 strength ad5    0.048    0.043
+31 1 strength ad10    0.013    0.044
+31 1 strength efp3    0.010    0.044
+31 1 strength efp5    0.046    0.029
+31 1 strength efp6   -0.007    0.024
+31 1 strength efp7    0.039    0.021
+31 1 strength efp8    0.040    0.030
+31 1 strength uf2    0.197    0.182
+31 1 strength uf3    0.215    0.196
+31 1 strength uf4    0.339    0.223
+31 1 strength uf6    0.818    0.286
+32 1 posem fop    0.000    0.000
+32 1 negem fop    0.000    0.000
+32 1 negem posem    0.000    0.000
+32 1 flow fop    0.000    0.000
+32 1 flow posem    0.000    0.000
+32 1 flow negem    0.000    0.000
+32 1 selfdet fop    0.000    0.000
+32 1 selfdet posem    0.000    0.000
+32 1 selfdet negem    0.000    0.000
+32 1 selfdet flow    0.000    0.000
+32 1 perseff fop    0.000    0.000
+32 1 perseff posem    0.000    0.000
+32 1 perseff negem    0.000    0.000
+32 1 perseff flow    0.000    0.000
+32 1 perseff selfdet    0.000    0.000
+32 1 strength fop    0.000    0.000
+32 1 strength posem    0.000    0.000
+32 1 strength negem    0.000    0.000
+32 1 strength flow    0.000    0.000
+32 1 strength selfdet    0.000    0.000
+32 1 strength perseff    0.000    0.000
+34 1 pe11    1.091    0.076
+34 1 pe14    0.204    0.057
+34 1 pe15    0.942    0.080
+34 1 pe3    0.725    0.063
+34 1 pe6    0.496    0.068
+34 1 pe10    0.857    0.077
+34 1 flux2    0.873    0.072
+34 1 flux5    0.501    0.054
+34 1 flux6    0.721    0.058
+34 1 flux7    0.405    0.045
+34 1 flux8    0.457    0.038
+34 1 ad2    0.488    0.048
+34 1 ad3    0.938    0.064
+34 1 ad5    0.962    0.063
+34 1 ad10    0.832    0.082
+34 1 efp3    0.546    0.043
+34 1 efp5    0.293    0.026
+34 1 efp6    0.357    0.028
+34 1 efp7    0.284    0.032
+34 1 efp8    0.213    0.019
+34 1 uf2    0.388    0.039
+34 1 uf3    0.228    0.064
+34 1 uf4    0.450    0.046
+34 1 uf6    0.104    0.495
+35 1 fop    1.000    0.000
+35 1 posem    1.000    0.000
+35 1 negem    1.000    0.000
+35 1 flow    1.000    0.000
+35 1 selfdet    1.000    0.000
+35 1 perseff    1.000    0.000
+35 1 strength    1.000    0.000
